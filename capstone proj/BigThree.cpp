@@ -29,7 +29,7 @@ MemberList& MemberList::operator=(const MemberList& otherMemberList)
 {
     if (this == &otherMemberList)
     {
-        cerr << "Attempted assignment to itself." << endl;
+        cerr << "Attempted assignment to itself.\n";
         return *this;
     }
 
@@ -38,8 +38,8 @@ MemberList& MemberList::operator=(const MemberList& otherMemberList)
     return *this;
 }
 
-Reservations::Reservations(const Reservations& otherReservation) 
-    :first(nullptr), last(nullptr), count(0) 
+Reservations::Reservations(const Reservations& otherReservation)
+    :first(nullptr), last(nullptr), count(0)
 {
     Node* current = otherReservation.first;
 
@@ -47,7 +47,7 @@ Reservations::Reservations(const Reservations& otherReservation)
     {
         while (current != nullptr)
         {
-            addReservation(current->getMemberID(), 
+            addReservation(current->getMemberID(),
                 current->getHikeName());
             current = current->getNext();
         }
@@ -55,31 +55,31 @@ Reservations::Reservations(const Reservations& otherReservation)
     }
 }
 
-Reservations& Reservations::operator=(const Reservations& 
+Reservations& Reservations::operator=(const Reservations&
     otherReservation)
 {
-    if (this == &otherReservation) 
+    if (this == &otherReservation)
     {
-        cerr << "Attempted assignment to itself." << std::endl;
+        cerr << "Attempted assignment to itself.\n";
         return *this;
     }
-    else if (otherReservation.first == nullptr) 
+    else if (otherReservation.first == nullptr)
     {
         clearList();
     }
-    else if (first == nullptr) 
+    else if (first == nullptr)
     {
         copyCallingObjIsEmpty(otherReservation);
     }
-    else if (count == otherReservation.count) 
+    else if (count == otherReservation.count)
     {
         copyObjectsSameLength(otherReservation);
     }
-    else if (count > otherReservation.count) 
+    else if (count > otherReservation.count)
     {
         copyCallingObjLonger(otherReservation);
     }
-    else 
+    else
     {
         copyCallingObjShorter(otherReservation);
     }
@@ -87,26 +87,25 @@ Reservations& Reservations::operator=(const Reservations&
     return *this;
 }
 
-
-void Reservations::copyCallingObjIsEmpty(const Reservations& 
+void Reservations::copyCallingObjIsEmpty(const Reservations&
     otherReservation)
 {
     Node* current = otherReservation.first;
 
-    while (current != nullptr) 
+    while (current != nullptr)
     {
         addReservation(current->getMemberID(), current->getHikeName());
         current = current->getNext();
     }
 }
 
-void Reservations::copyObjectsSameLength(const Reservations& 
+void Reservations::copyObjectsSameLength(const Reservations&
     otherReservation)
 {
     Node* currentThis = first;
     Node* currentOther = otherReservation.first;
 
-    while (currentThis != nullptr && currentOther != nullptr) 
+    while (currentThis != nullptr && currentOther != nullptr)
     {
         currentThis->setReservationNo(currentOther->getReservation());
         currentThis->setMemberID(currentOther->getMemberID());
@@ -117,13 +116,13 @@ void Reservations::copyObjectsSameLength(const Reservations&
     }
 }
 
-void Reservations::copyCallingObjLonger(const Reservations& 
+void Reservations::copyCallingObjLonger(const Reservations&
     otherReservation)
 {
     Node* currentThis = first;
     Node* currentOther = otherReservation.first;
 
-    while (currentOther != nullptr) 
+    while (currentOther != nullptr)
     {
         currentThis->setReservationNo(currentOther->getReservation());
         currentThis->setMemberID(currentOther->getMemberID());
@@ -135,7 +134,8 @@ void Reservations::copyCallingObjLonger(const Reservations&
 
     Node* toDelete = currentThis;
 
-    while (toDelete != nullptr) {
+    while (toDelete != nullptr)
+    {
         Node* temp = toDelete->getNext();
         delete toDelete;
         toDelete = temp;
@@ -147,13 +147,14 @@ void Reservations::copyCallingObjLonger(const Reservations&
     if (last) last->setNext(nullptr);
 }
 
-void Reservations::copyCallingObjShorter(const Reservations& 
+void Reservations::copyCallingObjShorter(const Reservations&
     otherReservation)
 {
     Node* currentThis = first;
     Node* currentOther = otherReservation.first;
 
-    while (currentThis != nullptr) {
+    while (currentThis != nullptr)
+    {
         currentThis->setReservationNo(currentOther->getReservation());
         currentThis->setMemberID(currentOther->getMemberID());
         currentThis->setHikeName(currentOther->getHikeName());
@@ -162,8 +163,9 @@ void Reservations::copyCallingObjShorter(const Reservations&
         currentOther = currentOther->getNext();
     }
 
-    while (currentOther != nullptr) {
-        addReservation(currentOther->getMemberID(), 
+    while (currentOther != nullptr)
+    {
+        addReservation(currentOther->getMemberID(),
             currentOther->getHikeName());
         currentOther = currentOther->getNext();
     }

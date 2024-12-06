@@ -13,9 +13,12 @@
 
 #include "MemberList.h"
 
+#include <iostream>
+#include <algorithm>
+
 using namespace std;
 
-void MemberList::addMember(const std::string& firstName, 
+void MemberList::addMember(const std::string& firstName,
 	const std::string& lastName)
 {
 	int nextID = MEMBER_ID + static_cast<int>(memberList->size());
@@ -27,7 +30,7 @@ void MemberList::addMember(const std::string& firstName,
 
 }
 
-void MemberList::addMember(const std::string& firstName, 
+void MemberList::addMember(const std::string& firstName,
 	const std::string& lastName, int points)
 {
 	int nextID = MEMBER_ID + static_cast<int>(memberList->size());
@@ -41,39 +44,31 @@ void MemberList::addMember(const std::string& firstName,
 
 int MemberList::getLastID() const
 {
-	if (memberList->empty())
-	{
-		return -1;
-	}
-
 	return memberList->rbegin()->getID();
 }
 
 int MemberList::getPoints(int memberID) const
 {
-	auto it = find_if(memberList->begin(), memberList->end(), 
-		[memberID](const Member& member) { return member.getID() 
-		== memberID; });
+	auto getPointsIter = find_if(memberList->begin(), memberList->end(),
+		[memberID](const Member& member)
+		{ return member.getID() == memberID; });
 
-	if (it != memberList->end())
-	{
-		return it->getPoints();
-	}
-
-	return -1;
+	return getPointsIter->getPoints();
 }
 
-void MemberList::printMember(int memberID, 
+void MemberList::printMember(int memberID,
 	const std::string& lastName) const
 {
-	auto it = find_if(memberList->begin(), memberList->end(), 
-		[memberID](const Member& member) { return member.getID() 
+	auto printMemberIter = find_if(memberList->begin(), memberList->end(),
+		[memberID](const Member& member) { return member.getID()
 		== memberID; });
 
-	if (it != memberList->end() && it->getLastName() == lastName)
+	if (printMemberIter != memberList->end() &&
+		printMemberIter->getLastName() == lastName)
 	{
-		it->printMember();
-		cout << "\tMembership # " << it->getID() << endl;
+		printMemberIter->printMember();
+
+		cout << "\tMembership # " << printMemberIter->getID() << endl;
 	}
 }
 

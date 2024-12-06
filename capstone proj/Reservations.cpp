@@ -12,27 +12,14 @@
 */
 
 #include "Reservations.h"
-#include "HikeList.h"
-#include "MemberList.h"
 
+#include <iostream>
 #include <iomanip>
 
 using namespace std;
 
-Node* Reservations::findReservation(int reservation) const
-{
-	Node* finderPtr = first;
-
-	while (finderPtr->getReservation() != reservation)
-	{
-		finderPtr = finderPtr->getNext();
-	}
-
-	return finderPtr;
-}
-
-
-int Reservations::addReservation(int memberID,const std::string& hikeName)
+int Reservations::addReservation(int memberID,
+	const std::string& hikeName)
 {
 	if (first == nullptr)
 	{
@@ -86,10 +73,12 @@ void Reservations::cancelReservation(int reservation)
 	cancelPtr = nullptr;
 }
 
-void Reservations::printReservation(int reservation, const HikeList& hikeList, const MemberList& memberList) const
+void Reservations::printReservation(int reservation,
+	const HikeList& hikeList, const MemberList& memberList) const
 {
 	Node* printPtr = findReservation(reservation);
 	string resHikeName = printPtr->getHikeName();
+
 	int memberID = printPtr->getMemberID();
 
 	double reservationPrice = hikeList.getPrice(resHikeName);
@@ -122,3 +111,14 @@ Reservations::~Reservations()
 	clearList();
 }
 
+Node* Reservations::findReservation(int reservation) const
+{
+	Node* finderPtr = first;
+
+	while (finderPtr->getReservation() != reservation)
+	{
+		finderPtr = finderPtr->getNext();
+	}
+
+	return finderPtr;
+}

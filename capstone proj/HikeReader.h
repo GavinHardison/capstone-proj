@@ -25,16 +25,16 @@ const string HIKES_FILE = "hikes_database.txt";
 void createHikeList(ifstream& infile, HikeList& hikeList)
 {
 	string location,
-	       hikeName;
+		hikeName;
 	int duration = 0;
 	char difficulty = 'e';
 	double price = 0.0;
 
 	while (!infile.eof())
 	{
-		infile >> location >> hikeName >> duration 
+		infile >> location >> hikeName >> duration
 			>> difficulty >> price;
-		hikeList.addHike(location, hikeName, duration, 
+		hikeList.addHike(location, hikeName, duration,
 			difficulty, price);
 	}
 }

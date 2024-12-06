@@ -34,7 +34,7 @@ void createReservations(ifstream& infile, Reservations& reservations)
 	}
 }
 
-void getReservationsData(Reservations& reservations) 
+void getReservationsData(Reservations& reservations)
 {
 	ifstream infile;
 	

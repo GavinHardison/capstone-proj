@@ -15,6 +15,7 @@
 #define HIKE_H
 
 #include <iostream>
+#include <string>
 
 class Hike
 {
@@ -26,8 +27,7 @@ public:
         const std::string& theHikeName, int theDuration,
         char theDifficulty)
         : location(theLocation), hikeName(theHikeName),
-        duration(theDuration), difficulty(theDifficulty) {
-    }
+        duration(theDuration), difficulty(theDifficulty) {}
 
     std::string getLocation() const;
     int getDuration() const;
@@ -39,7 +39,6 @@ public:
 private:
     std::string location;
     std::string hikeName;
-
     int duration;
     char difficulty;
 };

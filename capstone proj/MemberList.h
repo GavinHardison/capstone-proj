@@ -14,25 +14,23 @@
 #ifndef MEMBERLIST_H
 #define MEMBERLIST_H
 
-#include <set>
-#include <string>
-#include <iostream>
-
 #include "Member.h"
+
+#include <set>
 
 const int MEMBER_ID = 111;
 
 class MemberList
 {
 public:
-	MemberList() : memberList(new std::set<Member>()) {};
+	MemberList() : memberList(new std::set<Member>()) {}
 	MemberList(const MemberList& otherMemberList);
 
 	MemberList& operator=(const MemberList& otherMemberList);
 
-	void addMember(const std::string& firstName, 
+	void addMember(const std::string& firstName,
 					const std::string& lastName);
-	void addMember(const std::string& firstName, 
+	void addMember(const std::string& firstName,
 					const std::string& lastName, int points);
 
 	int getLastID() const;
@@ -46,4 +44,5 @@ public:
 private:
 	std::set<Member>* memberList;
 };
+
 #endif

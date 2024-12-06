@@ -18,32 +18,26 @@
 #include "MemberList.h"
 #include "Reservations.h"
 
-#include <string>
-
 void displayMenu();
-
-void processReservation(const HikeList& hike, MemberList& member, 
+void processReservation(const HikeList& hikeList, MemberList& memberList,
 	Reservations& reservation);
-
-void chooseByLocation(const HikeList& hike, MemberList& member,
+void chooseByLocation(const HikeList& hikeList, MemberList& memberList,
 	Reservations& reservation);
-void chooseByDuration(const HikeList& hike, MemberList& member,
+void chooseByDuration(const HikeList& hikeList, MemberList& memberList,
 	Reservations& reservation);
-void chooseByDifficulty(const HikeList& hike, MemberList& member,
+void chooseByDifficulty(const HikeList& hikeList, MemberList& memberList,
 	Reservations& reservation);
-void chooseByPrice(const HikeList& hike, MemberList& member,
+void chooseByPrice(const HikeList& hikeList, MemberList& memberList,
 	Reservations& reservation);
-
-int askIfMember(MemberList& memberName);
-int addNewMember(MemberList& newMember);
-
-void makeReservation(const HikeList& hike, MemberList& member,
+int askIfMember(MemberList& memberList);
+int addNewMember(MemberList& memberList);
+void makeReservation(const HikeList& hikeList, MemberList& memberList,
 	Reservations& reservation);
-void viewReservation(const HikeList& hike, MemberList& member,
+void viewReservation(const HikeList& hikeList, MemberList& memberList,
 	Reservations& reservation);
-void cancelReservation(const HikeList& hike, MemberList& member,
+void cancelReservation(const HikeList& hikeList, MemberList& memberList,
 	Reservations& reservation);
-void askToReserve(const HikeList& hike, MemberList& member,
+void askToReserve(const HikeList& hikeList, MemberList& memberList,
 	Reservations& reservation);
 
 #endif

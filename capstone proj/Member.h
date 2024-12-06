@@ -15,14 +15,12 @@
 #define MEMBER_H
 
 #include <string>
-#include <iostream>
 
 class Member
 {
 public:
 	Member(const std::string& aFirstName, const std::string& aLastName)
-		: id(0), firstName(aFirstName), lastName(aLastName), points(0) {
-	};
+		: id(0), firstName(aFirstName), lastName(aLastName), points(0) {};
 
 	void addPoints(int morePoints);
 	void setID(int newID);
@@ -30,6 +28,7 @@ public:
 	int getID() const;
 	std::string getLastName() const;
 	int getPoints() const;
+
 	void printMember() const;
 
 	bool operator<(const Member& otherMember) const;

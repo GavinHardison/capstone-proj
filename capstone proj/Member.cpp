@@ -13,6 +13,8 @@
 
 #include "Member.h"
 
+#include <iostream>
+
 using namespace std;
 
 void Member::addPoints(int morePoints)
@@ -42,8 +44,8 @@ int Member::getPoints() const
 
 void Member::printMember() const
 {
-	cout << "\t" << lastName << ", " << firstName << endl;
-	cout << "\t" << "Points available: " << points << endl;
+	cout << "\t" << lastName << ", " << firstName
+		<< "\n\t" << "Points available: " << points << "\n";
 }
 
 bool Member::operator<(const Member& otherMember) const

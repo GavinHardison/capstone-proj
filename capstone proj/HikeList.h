@@ -16,8 +16,8 @@
 
 #include "Hike.h"
 
-#include <iostream>
 #include <map>
+#include <string>
 
 class HikeList
 {

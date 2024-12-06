@@ -13,28 +13,24 @@
 
 #include "Hike.h"
 
-#include <string>
-#include <iostream>
-
 using namespace std;
 
 ostream& operator<<(ostream& out, const Hike& theHike)
 {
-    out << "\t" << theHike.hikeName << " (" << theHike.location
-        << ")\n";
-    out << "\t  " << "Difficulty: ";
+    out << "\t" << theHike.hikeName << " (" << theHike.location << ")"
+        << "\n\t  " << "Difficulty: ";
 
     switch (theHike.difficulty)
     {
-    case 'e':
-        out << "easy";
-        break;
-    case 'm':
-        out << "moderate";
-        break;
-    case 's':
-        out << "strenuous";
-        break;
+        case 'e':
+            out << "easy";
+            break;
+        case 'm':
+            out << "moderate";
+            break;
+        case 's':
+            out << "strenuous";
+            break;
     }
 
     out << "\n\t  Duration: " << theHike.duration << " day(s)\n";
@@ -61,7 +57,6 @@ string Hike::getHikeName() const
 {
     return hikeName;
 }
-
 
 bool Hike::operator<(const Hike& otherHike) const
 {

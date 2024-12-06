@@ -11,10 +11,10 @@
 	Outdoor Adventures
 */
 
-#include "Hike.h"
 #include "HikeList.h"
 
-#include <string>
+#include <iostream>
+#include <algorithm>
 #include <iomanip>
 
 using namespace std;
@@ -43,28 +43,28 @@ double HikeList::getPrice(const string& hikeName) const
 void HikeList::printAllLocations() const
 {
 	auto iter = hikeList.begin();
+
 	while (iter != hikeList.end())
 	{
 		cout << "\t" << iter->first.getLocation() << "\n";
 		iter = hikeList.upper_bound(iter->first);
 	}
+
 	cout << "\n";
 }
 
 void HikeList::printByLocation(const string& location) const
 {
-
 	for (auto iter = hikeList.begin(); iter != hikeList.end(); ++iter)
 	{
 		auto locationIter = find_if(iter, hikeList.end(),
 			[&location](const pair <Hike, double>& printByLocationPair)
-			{ return printByLocationPair.first.getLocation() 
+			{ return printByLocationPair.first.getLocation()
 			== location; });
 
 		if (iter->first.getLocation() == location)
 		{
-			cout << locationIter->first;
-			cout << "\t  Price (per person): $ " << fixed 
+			cout << locationIter->first << "\t  Price (per person): $ " << fixed
 				<< setprecision(2) << locationIter->second << "\n\n";
 		}
 	}
@@ -83,8 +83,8 @@ void HikeList::printByDuration() const
 
 	for (const auto& durationMapPair : durationMap)
 	{
-		cout << "\t(" << durationMapPair.first << ") ";
-		cout << durationMapPair.second << "\n";
+		cout << "\t(" << durationMapPair.first << ") "
+			<< durationMapPair.second << "\n";
 	}
 
 	cout << "\n";
@@ -107,8 +107,8 @@ void HikeList::printByDifficulty(char difficulty) const
 	{
 		if (durationPair.first.getDifficulty() == difficulty)
 		{
-			cout << "\t(" << difficulty << ") ";
-			cout << durationPair.first.getHikeName() << ", "
+			cout << "\t(" << difficulty << ") "
+				<< durationPair.first.getHikeName() << ", "
 				<< durationPair.first.getLocation() << "\n";
 		}
 	}
@@ -142,27 +142,27 @@ void HikeList::printByHikeName(const std::string& hikeName) const
 		[hikeName](const pair<Hike, double>& getPricePair)
 		{ return getPricePair.first.getHikeName() == hikeName; });
 
-	cout << "\t" << hikeName << " ("
-		<< hikeNameIter->first.getLocation() << ")\n";
-	cout << "\t  Difficulty: ";
+	cout << "\t" << hikeName << " (" << hikeNameIter->first.getLocation()
+		<< ")" 
+		<< "\n\t  Difficulty: ";
 
 	switch (hikeNameIter->first.getDifficulty())
 	{
-	case 'e':
-		cout << "easy";
-		break;
-	case 'm':
-		cout << "moderate";
-		break;
-	case 's':
-		cout << "strenuous";
-		break;
+		case 'e':
+			cout << "easy";
+			break;
+		case 'm':
+			cout << "moderate";
+			break;
+		case 's':
+			cout << "strenuous";
+			break;
 	}
 
 	cout << "\n\t  Duration: " << hikeNameIter->first.getDuration()
-		<< " day(s)\n";
-	cout << "\t  $" << fixed << setprecision(2)
-		<< hikeNameIter->second << "\n";
+		<< " day(s)"
+		<< "\n\t  $" << fixed << setprecision(2) << hikeNameIter->second
+		<< "\n";
 }
 
 void HikeList::clearList()

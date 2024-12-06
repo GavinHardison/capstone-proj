@@ -11,11 +11,9 @@
 	Outdoor Adventures
 */
 
-#include "Hike.h"
 #include "HikeList.h"
 #include "HikeReader.h"
 
-#include "Member.h"
 #include "MemberList.h"
 #include "MemberReader.h"
 
@@ -37,7 +35,9 @@ int main()
 	getMemberData(memberList1);
 	getHikeData(hikeList1);
 	getReservationsData(reservations1);
+
 	displayMenu();
+
 	processReservation(hikeList1, memberList1, reservations1);
 	
 	return 0;
